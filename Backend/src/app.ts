@@ -4,8 +4,8 @@ import { fileURLToPath } from "url";
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import morgan from "morgan";
-import battleRouter from "./routes/battle.Routes.js";
-import authRouter from "./routes/auth.routes.js";
+import battleRouter from "./routes/battle.routes.js";
+import authRouter from "./routes/auth.Routes.js";
 import config from "./config/config.js";
 import cookieParser from "cookie-parser";
 
