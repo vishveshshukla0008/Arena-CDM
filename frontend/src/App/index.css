@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+
+/* ─── Custom Keyframe Animations ────────────────────── */
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.4);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(207, 150, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(207, 150, 255, 0.7), 0 0 60px rgba(255, 107, 152, 0.3);
+  }
+}
+
+/* ─── Global Resets ──────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0c0c1d;
+  color: #e6e3fb;
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Scrollbar Styling ──────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #111124;
+}
+::-webkit-scrollbar-thumb {
+  background: #474659;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #757388;
+}
