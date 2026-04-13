@@ -34,11 +34,11 @@ export default function BattleCard({
             ? "ring-1 ring-[#474659]/40"
             : "ring-1 ring-[#474659]/20",
       ].join(" ")}
-      style={{ minHeight: 360 }}>
+      style={{ minHeight: window.innerWidth < 768 ? 280 : 360 }}>
       {/* Card Header */}
-      <div className="flex items-center justify-center gap-3 px-5 py-4 bg-[#18182b]/80 border-b border-[#474659]/20">
+      <div className="flex items-center justify-center gap-2 md:gap-3 px-3 md:px-5 py-3 md:py-4 bg-[#18182b]/80 border-b border-[#474659]/20">
         <span
-          className="text-2xl w-10 h-10 flex items-center justify-center rounded-xl shrink-0"
+          className="text-xl md:text-2xl w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-lg md:rounded-xl shrink-0"
           style={{
             background: `${model.color}22`,
             border: `1px solid ${model.color}44`,
@@ -46,34 +46,36 @@ export default function BattleCard({
           {model.icon}
         </span>
         <div className="flex-1 min-w-0">
-          <p className="text-[#e6e3fb] font-semibold text-sm  truncate">
+          <p className="text-[#e6e3fb] font-semibold text-xs md:text-sm truncate">
             {model.label}
           </p>
-          <p className="text-[#757388] text-[11px] font-['Manrope']">
+          <p className="text-[#757388] text-[9px] md:text-[11px] font-['Manrope']">
             {solutionKey === "solution_1" ? "Challenger A" : "Challenger B"}
           </p>
         </div>
 
-        <StatusBadge status={status} isWinner={isWinner} />
+        <div className="flex items-center gap-1.5 md:gap-2">
+          <StatusBadge status={status} isWinner={isWinner} />
 
-        {/* Score badge */}
-        {isComplete && score != null && (
-          <div
-            className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold font-['Space_Grotesk']"
-            style={{
-              background: isWinner
-                ? "rgba(0,255,136,0.15)"
-                : "rgba(71,70,89,0.3)",
-              color: isWinner ? "#00ff88" : "#aba9bf",
-              border: `1px solid ${isWinner ? "rgba(0,255,136,0.3)" : "rgba(71,70,89,0.3)"}`,
-            }}>
-            {score}/10
-          </div>
-        )}
+          {/* Score badge */}
+          {isComplete && score != null && (
+            <div
+              className="flex items-center gap-1 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full text-[10px] md:text-xs font-bold font-['Space_Grotesk']"
+              style={{
+                background: isWinner
+                  ? "rgba(0,255,136,0.15)"
+                  : "rgba(71,70,89,0.3)",
+                color: isWinner ? "#00ff88" : "#aba9bf",
+                border: `1px solid ${isWinner ? "rgba(0,255,136,0.3)" : "rgba(71,70,89,0.3)"}`,
+              }}>
+              {score}/10
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Response Area */}
-      <div className="flex-1 p-5 overflow-auto">
+      <div className="flex-1 p-3 md:p-5 overflow-auto custom-scrollbar">
         {isLoading ? (
           <SkeletonContent />
         ) : content ? (
@@ -85,11 +87,11 @@ export default function BattleCard({
 
       {/* Judge reasoning footer */}
       {isComplete && reasoning && (
-        <div className="px-5 py-3 bg-[#111124]/60 border-t border-[#474659]/20">
-          <p className="text-[10px] uppercase tracking-widest text-[#757388] font-['Space_Grotesk'] mb-1">
+        <div className="px-4 py-2 md:px-5 md:py-3 bg-[#111124]/60 border-t border-[#474659]/20">
+          <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#757388] font-['Space_Grotesk'] mb-0.5 md:mb-1">
             💎 Judge's Reasoning
           </p>
-          <p className="text-xs text-[#aba9bf] font-['Manrope'] leading-relaxed">
+          <p className="text-[11px] md:text-xs text-[#aba9bf] font-['Manrope'] leading-relaxed">
             {reasoning}
           </p>
         </div>
@@ -97,9 +99,9 @@ export default function BattleCard({
 
       {/* Winner badge overlay */}
       {isWinner && (
-        <div className="flex items-center justify-center gap-2 py-3 bg-[#00ff88]/10 border-t border-[#00ff88]/30">
+        <div className="flex items-center justify-center gap-2 py-2 md:py-3 bg-[#00ff88]/10 border-t border-[#00ff88]/30">
           <span
-            className="text-[#00ff88] text-sm font-bold font-['Space_Grotesk'] tracking-wider uppercase"
+            className="text-[#00ff88] text-xs md:text-sm font-bold font-['Space_Grotesk'] tracking-wider uppercase"
             style={{ textShadow: "0 0 10px rgba(0,255,136,0.5)" }}>
             🏆 Winner
           </span>
@@ -127,7 +129,7 @@ function StatusBadge({ status, isWinner }) {
   }
   if (status === BATTLE_STATUS.COMPLETE) {
     return (
-      <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-[#474659]/30 text-[#757388] border border-[#474659]/30 font-['Space_Grotesk'] uppercase tracking-wider text-yellow-300 border border-yellow-300">
+      <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-[#474659]/30 text-yellow-300 border border-yellow-300 font-['Space_Grotesk'] uppercase tracking-wider">
         Done
       </span>
     );
