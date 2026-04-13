@@ -7,5 +7,3 @@ const battleRouter: RouterType = Router();
 battleRouter.post("/", battleValidation, battleController);
 
 export default battleRouter;
-
-
