@@ -108,13 +108,7 @@ function SidebarLogo() {
           <img className="rounded-md" src={user?.profilePicture} alt="" />
         </div>
         <div>
-          <p
-            className="font-black text-base font-['Space_Grotesk'] tracking-wide"
-            style={{
-              background: "linear-linear(135deg, #cf96ff, #ff6b98)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
+          <p className=" text-white text-base font-normal tracking-wide">
             {user && user.fullname}
           </p>
           <p className="text-[#474659] text-[10px] font-['Manrope'] tracking-widest uppercase">

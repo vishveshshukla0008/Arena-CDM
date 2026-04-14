@@ -3,7 +3,9 @@ import ArenaHeader from "../components/ArenaHeader";
 import BattleGrid from "../components/BattleGrid";
 import Sidebar from "../../Sidebar/Sidebar";
 import { useBattle } from "../hooks/useBattle";
+import WelcomeSection from "../components/WelcomeSection";
 import { BATTLE_STATUS } from "../constants/models";
+
 
 export default function ArenaPage() {
   const battle = useBattle();
@@ -58,14 +60,7 @@ export default function ArenaPage() {
           )}
 
           {battle.status === BATTLE_STATUS.IDLE && !battle.prompt ? (
-            <div className="flex items-center justify-center h-48 md:h-64 border border-[#474659]/20 rounded-2xl bg-[#111124]/40 mt-4 md:mt-8">
-              <p className="text-[#aba9bf] text-xs md:text-sm uppercase tracking-widest font-['Space_Grotesk'] text-center px-4">
-                Enter a prompt and <br />
-                <span className="text-[#cf96ff] font-bold mt-2 inline-block">
-                  Start the Battle
-                </span>
-              </p>
-            </div>
+            <WelcomeSection />
           ) : (
             <BattleGrid
               status={battle.status}
